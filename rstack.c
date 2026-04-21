@@ -67,7 +67,7 @@ _Static_assert(sizeof(uintptr_t) <= sizeof(uint64_t),
 /* Number of uint64_t needed for bitset to hold `cap` bits. To find that, we
  * need to divide by 64 and round up. So, (cap + 63) / 64. Division by 64 is
  * identical to bitshift by 6 (and bitshifting is the fastest way for CPU to do
- * division), thus this formula.*/
+ * division), thus this formula. */
 #define TYPE_WORDS(cap) (((cap) + 63) >> 6)
 
 /* Size of each arena block (64 KB). */
@@ -95,7 +95,7 @@ struct rstack {
 	rstack_t *work_next; /* GC traversal worklist. Used because dynamically
 							allocating an array for them is slow AND disallows
 							us to try to free memory using GC when OOM */
-	uint32_t gc_epoch;	 /* epoch stamp for GC marking*/
+	uint32_t gc_epoch;	 /* epoch stamp for GC marking */
 	uint32_t visit_gen;	 /* DFS cycle detection stamp */
 	uint64_t sao_type;	 /* packed type bits for SAO mode */
 
